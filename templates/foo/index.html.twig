@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FooController!{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <dov class="col-12">
+                <a href="{{ path('foo_create') }}" class="btn btn-primary">New Foo</a>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for foo in foos %}
+                        <tr>
+                            <td>{{ foo.name }}</td>
+                            <td> - </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </dov>
+        </div>
+    </div>
+
+{% endblock %}

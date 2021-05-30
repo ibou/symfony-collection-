@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello FooController!{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <dov class="col-12">
+                {{ form_start(form) }}
+                {{ form_row(form.name) }}
+                <button class="btn btn-primary" id="new-bar" type="button">New Bar</button>
+                {{ form_row(form.bars) }}
+                <button class="btn btn-primary" id="new-baz" type="button">New Baz</button>
+                {{ form_row(form.bazs) }}
+                {{ form_end(form) }}
+            </dov>
+        </div>
+    </div>
+
+{% endblock %}
