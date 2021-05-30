@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Form;
 
 use App\Entity\Foo;
+use App\Entity\Qux;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -30,6 +31,15 @@ class FooType extends AbstractType
                   CollectionType::class,
                   [
                       'entry_type' => BazType::class,
+                      'by_reference' => false,
+                      'allow_add' => true,
+                      'allow_delete' => true,
+                      'error_bubbling' => false,
+                  ])
+            ->add('quxes',
+                  CollectionType::class,
+                  [
+                      'entry_type' => QuxType::class,
                       'by_reference' => false,
                       'allow_add' => true,
                       'allow_delete' => true,

@@ -45,12 +45,20 @@ class Foo
     #[Assert\Count(min: 1)]
     #[Assert\Valid]
     private Collection $bazs;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Qux::class, mappedBy="foo", orphanRemoval=true, cascade={"persist"})
+     */
+    #[Assert\Count(min: 1)]
+    #[Assert\Valid]
+    private Collection $quxes;
     
     
     public function __construct()
     {
         $this->bars = new ArrayCollection();
         $this->bazs = new ArrayCollection();
+        $this->quxes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -122,6 +130,35 @@ class Foo
         if ($this->bazs->removeElement($baz)) {
             if ($baz->getFoo() === $this) {
                 $baz->setFoo(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Qux>
+     */
+    public function getQuxes(): Collection
+    {
+        return $this->quxes;
+    }
+
+    public function addQux(Qux $qux): self
+    {
+        if (!$this->quxes->contains($qux)) {
+            $this->quxes[] = $qux;
+            $qux->setFoo($this);
+        }
+
+        return $this;
+    }
+
+    public function removeQux(Qux $qux): self
+    {
+        if ($this->quxes->removeElement($qux)) {
+            if ($qux->getFoo() === $this) {
+                $qux->setFoo(null);
             }
         }
 
