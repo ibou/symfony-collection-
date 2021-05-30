@@ -24,6 +24,7 @@ class Bar
      * @ORM\Column(type="string", length=255)
      */
     #[Assert\NotBlank]
+    #[Assert\Length(min: 2)]
     private string $name;
 
     /**

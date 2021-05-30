@@ -1,0 +1,23 @@
+{{ form_widget(form._token) }}
+                {{ form_widget(form.name) }}
+                {{ form_errors(form.bars) }}
+<button type="button" class="btn btn-primary btn-new" data-collection="#bars">New Bar</button>
+<div id="bars"
+     data-prototype=" {{ include('foo/_bar.html.twig', {form: form.bars.vars.prototype})|e("html_attr") }}"
+     data-index="{{ form.bars|length > 0 ? form.bars|last.vars.name + 1 : 0 }}"
+     class="row">
+    {% for bar in form.bars  %}
+        {{ include('foo/_bar.html.twig', {form: bar}) }}
+    {% endfor %}
+</div>
+{{ form_errors(form.bars) }}
+<button type="button" class="btn btn-primary btn-new" data-collection="#bazs">New Baz</button>
+<div id="bazs"
+     data-prototype=" {{ include('foo/_baz.html.twig', {form: form.bazs.vars.prototype})|e("html_attr") }}"
+     data-index="{{ form.bars|length > 0 ? form.bazs|last.vars.name + 1 : 0 }}"
+     class="row">
+    {% for baz in form.bazs  %}
+        {{ include('foo/_baz.html.twig', {form: baz}) }}
+    {% endfor %}
+</div>
+{{ form_errors(form.bazs) }}

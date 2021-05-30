@@ -5,7 +5,7 @@
 {% block body %}
     <div class="container">
         <div class="row">
-            <dov class="col-12">
+            <div class="col-12">
                 <a href="{{ path('foo_create') }}" class="btn btn-primary">New Foo</a>
                 <table class="table">
                     <thead>
@@ -18,12 +18,13 @@
                     {% for foo in foos %}
                         <tr>
                             <td>{{ foo.name }}</td>
-                            <td> - </td>
+                            <td>
+                                <a href="{{ path("foo_update", {id: foo.id}) }}" class="btn btn-sm btn-primary">Update</a> </td>
                         </tr>
                     {% endfor %}
                     </tbody>
                 </table>
-            </dov>
+            </div>
         </div>
     </div>
 

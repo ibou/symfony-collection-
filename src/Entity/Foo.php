@@ -27,6 +27,7 @@ class Foo
      *
      */
     #[Assert\NotBlank]
+    #[Assert\Length(min:2)]
     private string $name;
     
     /**
@@ -34,6 +35,7 @@ class Foo
      * @ORM\OneToMany(targetEntity=Bar::class, mappedBy="foo", orphanRemoval=true, cascade={"persist"})
      */
     #[Assert\Count(min: 1)]
+    #[Assert\Valid]
     private Collection $bars;
     
     /**
@@ -41,6 +43,7 @@ class Foo
      * @ORM\OneToMany(targetEntity=Baz::class, mappedBy="foo", orphanRemoval=true, cascade={"persist"})
      */
     #[Assert\Count(min: 1)]
+    #[Assert\Valid]
     private Collection $bazs;
     
     

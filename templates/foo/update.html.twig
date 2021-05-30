@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Create New!{% endblock %}
+{% block title %}Update {% endblock %}
 
 {% block body %}
     <div class="container">
         <div class="row">
             <div class="col-12">
                 {{ form_start(form) }}
-                    {{ include("foo/_form.html.twig", {form: form}) }}
-                    <button type="submit" class="btn btn-success">Valider</button>
+                {{ include("foo/_form.html.twig", {form: form}) }}
+                <button type="submit" class="btn btn-success">Update</button>
                 {{ form_end(form, {render_rest: false}) }}
             </div>
         </div>
